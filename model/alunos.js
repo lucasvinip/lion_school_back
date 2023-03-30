@@ -686,41 +686,6 @@ var alunos = [
 ];
 
 
-// lista todos os alunos
-const getlistStudents = function(){
-    let listArray = []
-
-    alunos.forEach(date =>{
-        listArray.push(
-            {
-                image_aluno: date.foto,
-                nome_aluno: date.nome,
-            }
-        )
-    })
-    return listArray
+module.exports = {
+    alunos
 }
-
-// console.log(getlistStudents());
-
-// pega informaçoes do aluno pela matricula
-const getDescriptionStudents = function(number){
-    let listArray = []
-
-    alunos.forEach(date =>{
-        if(number == date.matricula){
-            listArray.push(
-                {
-                    image_aluno: date.foto,
-                    nome_aluno: date.nome,
-                    matricula_aluno: date.matricula,
-                    sexo_aluno: date.sexo,
-                    curso_aluno: date.curso
-                }
-            )
-        }
-    })
-    return listArray
-}
-
-console.log(getDescriptionStudents(20151001002));

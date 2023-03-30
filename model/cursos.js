@@ -13,23 +13,8 @@ var cursos = [
     }
 ];
 
-// lista todos os cursos
-const getListCourses = function(){
-    let listArray = []
-
-    cursos.forEach(function(date){
-        listArray.push(
-            {
-                nome_curso: date.nome,
-                sigla_curso: date.sigla,
-                icone_curso: date.icone,
-                carga_horaria: date.carga
-            }
-        )
-    })
-    return listArray
+module.exports = {
+    cursos
 }
-
-// console.log(getListCourses());
 
 
