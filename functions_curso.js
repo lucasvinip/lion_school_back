@@ -19,7 +19,7 @@ const getListCourses = function(){
     return listJson
 }
 
-console.log(getListCourses());
+// console.log(getListCourses());
 
 module.exports = {
     getListCourses

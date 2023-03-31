@@ -53,7 +53,8 @@ const getStudentsInCourses = function(course){
                     {
                         foto: date.foto,
                         nome: date.nome,
-                        sexo: date.sexo
+                        sexo: date.sexo,
+                        curso: dateName.sigla,
                     }
                 )
             }
@@ -62,7 +63,7 @@ const getStudentsInCourses = function(course){
     })
     return listJson
 }
-// console.log(getMatriculadosNoCurso('RDS'))
+// console.log(getStudentsInCourses('DS'))
 
 // pega aluno pelo status
 const getStudentsStatus = function(status){
@@ -73,6 +74,7 @@ const getStudentsStatus = function(status){
         if(status == date.status){
             listArray.push(
                 {
+                    foto: date.foto,
                     nome: date.nome,
                     status: date.status
                 }
@@ -82,7 +84,8 @@ const getStudentsStatus = function(status){
     })
     return listJson
 }
-// console.log(getStudentsStatus('Cursando'));
+//console.log(getStudentsStatus('Cursando'));
+//console.log(getStudentsStatus('Finalizado'));
 
 module.exports = {
     getlistStudents,
