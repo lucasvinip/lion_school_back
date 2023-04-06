@@ -99,7 +99,7 @@ app.get('/v1/lion-school/alunos/curso', cors(), async function(request, response
 
     if(siglaCourse == '' || siglaCourse == undefined || !isNaN(siglaCourse)){
         statusCode = 400
-        dadosEstado.message =  'Não é possivel processar a requisição o paremetro esta errada'
+        dadosCourse.message =  'Não é possivel processar a requisição o paremetro esta errada'
     }
     else{
         

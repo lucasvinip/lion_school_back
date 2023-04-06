@@ -10,6 +10,7 @@ const getlistStudents = function(){
             {
                 image_aluno: date.foto,
                 nome_aluno: date.nome,
+                status: date.status
             }
         )
         listjson.alunos = listArray
@@ -53,6 +54,7 @@ const getStudentsInCourses = function(course){
                     {
                         foto: date.foto,
                         nome: date.nome,
+                        status: date.status,
                         sexo: date.sexo,
                         curso: dateName.sigla,
                     }
