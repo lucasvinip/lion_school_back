@@ -54,9 +54,10 @@ const getStudentsInCourses = function(course){
                     {
                         foto: date.foto,
                         nome: date.nome,
+                        matricula: date.matricula,
                         status: date.status,
                         sexo: date.sexo,
-                        curso: dateName.sigla,
+                        curso: dateName.sigla
                     }
                 )
             }

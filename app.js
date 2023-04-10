@@ -64,9 +64,9 @@ app.get('/v1/lion-school/alunos', cors(), async function(request, response, next
     response.json(listStudents)
 })
 
-app.get('/v1/lion-school/alunos/matricula', cors(), async function(request, response, next){
+app.get('/v1/lion-school/alunos/:matricula', cors(), async function(request, response, next){
 
-    let matricula = request.query.numero
+    let matricula = request.params.matricula
     let statusCode
     let dadosAlunoMatricula = {}
 
