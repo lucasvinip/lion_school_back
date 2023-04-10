@@ -66,15 +66,17 @@ const getStudentsInCourses = function(course){
     })
     return listJson
 }
-// console.log(getStudentsInCourses('DS'))
+// console.log(getStudentsInCourses('RDS'))
 
 // pega aluno pelo status
 const getStudentsStatus = function(status){
     let listArray = []
     let listJson = {}
 
+    let caseStatus = status[0].toUpperCase() + status.substring(1).toLowerCase()
+
     alunos.alunos.forEach(date =>{
-        if(status == date.status){
+        if(caseStatus == date.status){
             listArray.push(
                 {
                     foto: date.foto,
@@ -87,7 +89,8 @@ const getStudentsStatus = function(status){
     })
     return listJson
 }
-//console.log(getStudentsStatus('Cursando'));
+
+// console.log(getStudentsStatus('CurSando'));
 //console.log(getStudentsStatus('Finalizado'));
 
 module.exports = {
