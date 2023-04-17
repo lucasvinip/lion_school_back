@@ -9,7 +9,7 @@ const getlistStudents = function(){
         listArray.push(
             {
                 image_aluno: date.foto,
-                nome_aluno: date.nome,
+                nome_aluno: date.nome.toUpperCase(),
                 status: date.status
             }
         )
@@ -30,7 +30,7 @@ const getDescriptionStudents = function(registration){
                 {
                     numero_matricula: date.matricula,
                     image_aluno: date.foto,
-                    nome_aluno: date.nome,
+                    nome_aluno: date.nome.toUpperCase(),
                     sexo_aluno: date.sexo,
                     curso_aluno: date.curso
                 }
@@ -40,7 +40,7 @@ const getDescriptionStudents = function(registration){
     })
     return listJson
 }
-// console.log(getDescriptionStudents(20151001002));
+//console.log(getDescriptionStudents(20151001002));
 
 // pega aluno pelo curso
 const getStudentsInCourses = function(course){
@@ -53,7 +53,7 @@ const getStudentsInCourses = function(course){
                 listArray.push(
                     {
                         foto: date.foto,
-                        nome: date.nome,
+                        nome: date.nome.toUpperCase(),
                         matricula: date.matricula,
                         status: date.status,
                         sexo: date.sexo,
@@ -80,7 +80,7 @@ const getStudentsStatus = function(status){
             listArray.push(
                 {
                     foto: date.foto,
-                    nome: date.nome,
+                    nome: date.nome.toUpperCase(),
                     status: date.status
                 }
             )

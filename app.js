@@ -1,7 +1,7 @@
 /****
  * Objetivo: Criar uma API para manipulaçao de dados um arquivo alunos e cursos
  * Autor: Lucas Vinicius e Clara Oliveira
- * Data: 10/03/2023
+ * Data: 27/03/2023
  * Versao: 1.0
  */
 
@@ -47,7 +47,7 @@ app.get('/v1/lion-school/cursos', cors(), async function(request, response, next
 
 
 // EndPoint para listar alunos
-app.get('/v1/lion-school/alunos', cors(), async function(request, response, next){
+app.get('/v1/lion-school/alunos', cors(), async function(request, response){
     
     let listStudents = alunos.getlistStudents()
     let statusCode
@@ -64,84 +64,85 @@ app.get('/v1/lion-school/alunos', cors(), async function(request, response, next
     response.json(listStudents)
 })
 
-app.get('/v1/lion-school/alunos/matricula/:matricula', cors(), async function(request, response, next){
+app.get('/v1/lion-school/alunos/:matricula', cors(), async function(request, response){
 
     let matricula = request.params.matricula
     let statusCode
-    let dadosAlunoMatricula = {}
+    let matriculasAluno = alunos.getDescriptionStudents(matricula)
+    let dateStudents = {}
 
-    if(matricula == '' || matricula == undefined || isNaN(matricula)){
-        statusCode = 400
-        dadosAlunoMatricula.message =  'Não é possivel processar a requisição o paremetro esta errada'
-    }
-    else{
-        let matriculas = alunos.getDescriptionStudents(matricula)
-        
-        if(matriculas){
-            statusCode = 200
-            dadosAlunoMatricula = matriculas
+    if(matriculasAluno){
+        if(matricula == '' || matricula == undefined || isNaN(matricula)){
+            statusCode = 400
+            dateStudents.message =  'Não é possivel processar a requisição o paremetro esta errada'
         }
-        else
-            statusCode = 404
+        else{
+            if(matriculasAluno){
+                statusCode = 200
+                dateStudents = matriculasAluno
+            }
+            else
+                statusCode = 404
+        }
     }
-
+    
     response.status(statusCode)
-    response.json(dadosAlunoMatricula)
+    response.json(dateStudents)
 
 })
 
 // EndPoint para listar alunos em tal curso
-app.get('/v1/lion-school/alunos/curso', cors(), async function(request, response, next){
+app.get('/v1/lion-school/alunos', cors(), async function(request, response, next){
 
-    let siglaCourse = request.query.sigla
+    let siglaCourse = request.query.curso
     let statusCode
-    let dadosCourse = {}
+    let course = alunos.getStudentsInCourses(siglaCourse)
+    let dateCourse = {}
 
-    if(siglaCourse == '' || siglaCourse == undefined || !isNaN(siglaCourse)){
-        statusCode = 400
-        dadosCourse.message =  'Não é possivel processar a requisição o paremetro esta errada'
-    }
-    else{
-        
-        let course = alunos.getStudentsInCourses(siglaCourse)
-        
-        
-        if(course){
-            statusCode = 200 // estado encontrado
-            dadosCourse = course
+    if(course){
+        if(siglaCourse == '' || siglaCourse == undefined || !isNaN(siglaCourse)){
+            statusCode = 400
+            dateCourse.message =  'Não é possivel processar a requisição o paremetro esta errada'
         }
-        else
-            statusCode = 404 // estado nao encontrado
+        else{
+            if(course){
+                statusCode = 200 // estado encontrado
+                dateCourse = course
+            }
+            else
+                statusCode = 404 // estado nao encontrado
+        }
     }
 
     response.status(statusCode)
-    response.json(dadosCourse)
+    response.json(dateCourse)
 })
 
 // EndPoint para listar alunos pelo status
-app.get('/v1/lion-school/alunos/classificacao', cors(), async function(request, response, next){
+app.get('/v1/lion-school/alunos', cors(), async function(request, response){
 
     let statusAluno = request.query.status
     let statusCode
-    let dadosStatus = {}
+    let status = alunos.getStudentsStatus(statusAluno)
+    let dateStatus = {}
 
-    if(statusAluno == '' || statusAluno == undefined || !isNaN(statusAluno)){
-        statusCode = 400
-        dadosEstado.message =  'Não é possivel processar a requisição o paremetro esta errada'
-    }
-    else{
-        let status = alunos.getStudentsStatus(statusAluno)
-        
-        if(status){
-            statusCode = 200 // estado encontrado
-            dadosStatus = status
+    if(status){
+        if(statusAluno == '' || statusAluno == undefined || !isNaN(statusAluno)){
+            statusCode = 400
+            dateStatus.message =  'Não é possivel processar a requisição o paremetro esta errada'
         }
-        else
-            statusCode = 404 // estado nao encontrado
+        else{
+            if(status){
+                statusCode = 200 // estado encontrado
+                dateStatus = status
+            }
+            else
+                statusCode = 404 // estado nao encontrado
+        }
     }
 
     response.status(statusCode)
-    response.json(dadosStatus)
+    response.json(dateStatus)
 })
 
 
